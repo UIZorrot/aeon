@@ -40,7 +40,7 @@ get_category() {
     fork-first-run-alert|fork-skill-gap) echo "dev" ;;
     smithery-manifest) echo "dev" ;;
     # Crypto & Markets
-    token-alert|token-movers|token-report|token-pick|monitor-runners|price-threshold-alert) echo "crypto" ;;
+    token-alert|token-movers|token-report|token-pick|monitor-runners|price-threshold-alert|careful-finance) echo "crypto" ;;
     on-chain-monitor|defi-monitor|defi-overview|market-context-refresh|narrative-tracker) echo "crypto" ;;
     monitor-polymarket|monitor-kalshi|polymarket-comments|unlock-monitor) echo "crypto" ;;
     treasury-info|distribute-tokens|contributor-reward) echo "crypto" ;;

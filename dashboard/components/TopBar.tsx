@@ -46,7 +46,7 @@ export function TopBar({ skill, view, repo, model, gateway, authStatus, authLoad
         )}
         {authStatus && !authStatus.authenticated && (
           <button onClick={onSetupAuth} disabled={authLoading} className="btn-solid-sm disabled:opacity-50">
-            {authLoading ? '…' : 'Auth'}
+            {authLoading ? '...' : 'API Key'}
           </button>
         )}
         <select
@@ -71,11 +71,11 @@ export function TopBar({ skill, view, repo, model, gateway, authStatus, authLoad
         )}
         <button onClick={onPull} disabled={pulling} className="btn-quiet disabled:opacity-50">
           {behind > 0 && <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-aeon-red animate-pulse" />}
-          {pulling ? '…' : 'Pull'}
+          {pulling ? '...' : 'Pull'}
         </button>
         <button onClick={onSync} disabled={syncing || !hasChanges} className="btn-quiet disabled:opacity-40">
           {hasChanges && <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-aeon-green" />}
-          {syncing ? '…' : 'Push'}
+          {syncing ? '...' : 'Push'}
         </button>
       </div>
     </div>

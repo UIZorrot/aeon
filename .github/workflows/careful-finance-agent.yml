@@ -1,0 +1,52 @@
+name: Careful Finance Agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      job_id:
+        required: true
+        type: string
+      user_query:
+        required: true
+        type: string
+      filters:
+        required: false
+        type: string
+        default: "{}"
+
+jobs:
+  answer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      JOB_ID: ${{ inputs.job_id }}
+      USER_QUERY: ${{ inputs.user_query }}
+      FILTERS: ${{ inputs.filters }}
+      AGENT_SERVICE_INGEST_URL: ${{ secrets.AGENT_SERVICE_INGEST_URL }}
+      RUNNER_INGEST_TOKEN: ${{ secrets.RUNNER_INGEST_TOKEN }}
+      ASTRO_PULSE_SECOND_URL: ${{ vars.ASTRO_PULSE_SECOND_URL }}
+      ASTRO_PULSE_LITE_URL: ${{ vars.ASTRO_PULSE_LITE_URL }}
+      BARKER_LIQUIDITY_OVERVIEW_URL: ${{ vars.BARKER_LIQUIDITY_OVERVIEW_URL }}
+      BARKER_VAULT_POOLS_URL: ${{ vars.BARKER_VAULT_POOLS_URL }}
+      BARKER_CAMPAIGNS_URL: ${{ vars.BARKER_CAMPAIGNS_URL }}
+      BARKER_DEFI_ASSETS: ${{ vars.BARKER_DEFI_ASSETS }}
+      BARKER_API_KEY: ${{ secrets.BARKER_API_KEY }}
+      USE_CLAUDE_CODE: ${{ vars.USE_CLAUDE_CODE }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      BANKR_LLM_KEY: ${{ secrets.BANKR_LLM_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+
+      - name: Install Claude Code
+        if: vars.USE_CLAUDE_CODE == 'true'
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Run Careful Finance agent
+        run: node scripts/careful-finance/perp-arb-agent.mjs

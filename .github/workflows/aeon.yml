@@ -139,6 +139,10 @@ jobs:
           ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
           SUPERNOTES_API_KEY: ${{ secrets.SUPERNOTES_API_KEY }}
+          AGENT_SERVICE_OPPORTUNITIES_URL: ${{ secrets.AGENT_SERVICE_OPPORTUNITIES_URL }}
+          AGENT_SERVICE_INGEST_URL: ${{ secrets.AGENT_SERVICE_INGEST_URL }}
+          RUNNER_INGEST_TOKEN: ${{ secrets.RUNNER_INGEST_TOKEN }}
+          BARKER_API_KEY: ${{ secrets.BARKER_API_KEY }}
         run: |
           SKILL_FILE="skills/${{ steps.skill.outputs.name }}/SKILL.md"
           [ ! -f "$SKILL_FILE" ] && exit 0
@@ -268,6 +272,16 @@ jobs:
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
           NEYNAR_API_KEY: ${{ secrets.NEYNAR_API_KEY }}
           NEYNAR_SIGNER_UUID: ${{ secrets.NEYNAR_SIGNER_UUID }}
+          AGENT_SERVICE_OPPORTUNITIES_URL: ${{ secrets.AGENT_SERVICE_OPPORTUNITIES_URL }}
+          AGENT_SERVICE_INGEST_URL: ${{ secrets.AGENT_SERVICE_INGEST_URL }}
+          RUNNER_INGEST_TOKEN: ${{ secrets.RUNNER_INGEST_TOKEN }}
+          BARKER_API_KEY: ${{ secrets.BARKER_API_KEY }}
+          BARKER_DEFI_ASSETS: ${{ vars.BARKER_DEFI_ASSETS }}
+          ASTRO_PULSE_SECOND_URL: ${{ vars.ASTRO_PULSE_SECOND_URL }}
+          ASTRO_PULSE_LITE_URL: ${{ vars.ASTRO_PULSE_LITE_URL }}
+          BARKER_LIQUIDITY_OVERVIEW_URL: ${{ vars.BARKER_LIQUIDITY_OVERVIEW_URL }}
+          BARKER_VAULT_POOLS_URL: ${{ vars.BARKER_VAULT_POOLS_URL }}
+          BARKER_CAMPAIGNS_URL: ${{ vars.BARKER_CAMPAIGNS_URL }}
           JSONRENDER_ENABLED: ${{ vars.JSONRENDER_ENABLED || 'true' }}
           SKILL_VAR: ${{ inputs.var }}
           SKILL_NAME: ${{ steps.skill.outputs.name }}

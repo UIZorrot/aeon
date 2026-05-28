@@ -69,7 +69,7 @@ cd aeon && ./aeon
 
 Click on `http://localhost:5555` to open the dashboard in your browser. From there:
 
-1. **Authenticate** — add your Claude API key or OAuth token
+1. **Authenticate** — add an Anthropic API key or, optionally, a Claude subscription OAuth token
 2. **Add a channel** — set up [Telegram, Discord, or Slack](#notifications) so Aeon can talk to you (and you can talk back)
 3. **Pick skills** — toggle on what you want, set a schedule, and optionally set a `var` to focus each skill
 4. **Push** — one click commits and pushes your config to GitHub, Actions takes it from there

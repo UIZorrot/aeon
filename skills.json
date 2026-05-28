@@ -144,6 +144,18 @@
             "install": "./add-skill aaronjmars/aeon builder-map"
         },
         {
+            "slug": "careful-finance",
+            "name": "careful-finance",
+            "description": "Scan Careful Finance perpetual futures and stablecoin DeFi/CEX opportunity feeds, publish the cache, and report the top informational opportunities.",
+            "category": "crypto",
+            "schedule": "workflow_dispatch",
+            "var": "",
+            "files": 0,
+            "sha": "",
+            "updated": "",
+            "install": "./add-skill aaronjmars/aeon careful-finance"
+        },
+        {
             "slug": "changelog",
             "name": "Changelog",
             "description": "Generate a user-facing weekly changelog (Keep a Changelog format) from recent commits across watched repos",

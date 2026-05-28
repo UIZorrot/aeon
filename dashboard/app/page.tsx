@@ -99,7 +99,7 @@ export default function Dashboard() {
           skill={skill} view={view} repo={repo} model={model} gateway={gateway}
           authStatus={authStatus} authLoading={authLoading}
           pulling={pulling} syncing={syncing} hasChanges={hasChanges} behind={behind}
-          onSetupAuth={() => setupAuth()} onUpdateModel={updateModel}
+          onSetupAuth={() => setShowAuthModal(true)} onUpdateModel={updateModel}
           onShowImport={() => setShowImport(true)} onPull={pullFromGithub} onSync={syncToGithub}
         />
 

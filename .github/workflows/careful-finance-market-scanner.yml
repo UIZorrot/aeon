@@ -1,0 +1,38 @@
+name: Careful Finance Market Scanner
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+    inputs:
+      filters:
+        required: false
+        type: string
+        default: "{}"
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    env:
+      FILTERS: ${{ inputs.filters || '{}' }}
+      AGENT_SERVICE_OPPORTUNITIES_URL: ${{ secrets.AGENT_SERVICE_OPPORTUNITIES_URL }}
+      RUNNER_INGEST_TOKEN: ${{ secrets.RUNNER_INGEST_TOKEN }}
+      ASTRO_PULSE_SECOND_URL: ${{ vars.ASTRO_PULSE_SECOND_URL }}
+      ASTRO_PULSE_LITE_URL: ${{ vars.ASTRO_PULSE_LITE_URL }}
+      BARKER_LIQUIDITY_OVERVIEW_URL: ${{ vars.BARKER_LIQUIDITY_OVERVIEW_URL }}
+      BARKER_VAULT_POOLS_URL: ${{ vars.BARKER_VAULT_POOLS_URL }}
+      BARKER_CAMPAIGNS_URL: ${{ vars.BARKER_CAMPAIGNS_URL }}
+      BARKER_DEFI_ASSETS: ${{ vars.BARKER_DEFI_ASSETS }}
+      BARKER_API_KEY: ${{ secrets.BARKER_API_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+
+      - name: Publish latest Careful Finance opportunity cache
+        run: node scripts/careful-finance/market-scanner.mjs
