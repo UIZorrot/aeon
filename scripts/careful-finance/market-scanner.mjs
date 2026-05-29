@@ -78,8 +78,8 @@ async function main() {
 }
 
 async function publish(snapshot) {
-  const url = process.env.AGENT_SERVICE_OPPORTUNITIES_URL;
-  const token = process.env.RUNNER_INGEST_TOKEN;
+  const url = cleanEnv(process.env.AGENT_SERVICE_OPPORTUNITIES_URL);
+  const token = cleanEnv(process.env.RUNNER_INGEST_TOKEN);
 
   if (!url || !token) {
     console.log(JSON.stringify(snapshot, null, 2));
@@ -180,6 +180,10 @@ function parseJson(value) {
   } catch {
     return {};
   }
+}
+
+function cleanEnv(value) {
+  return String(value || "").replace(/^\uFEFF/, "").trim();
 }
 
 main().catch((error) => {

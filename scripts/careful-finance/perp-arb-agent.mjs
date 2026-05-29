@@ -154,8 +154,8 @@ function deterministicAnswer(opportunities) {
 }
 
 async function ingest(jobId, patch) {
-  const ingestUrl = process.env.AGENT_SERVICE_INGEST_URL;
-  const ingestToken = process.env.RUNNER_INGEST_TOKEN;
+  const ingestUrl = cleanEnv(process.env.AGENT_SERVICE_INGEST_URL);
+  const ingestToken = cleanEnv(process.env.RUNNER_INGEST_TOKEN);
   if (!ingestUrl || !ingestToken) {
     console.log(JSON.stringify({ job_id: jobId, ...patch }, null, 2));
     return;
@@ -255,6 +255,10 @@ function parseJson(value) {
   } catch {
     return {};
   }
+}
+
+function cleanEnv(value) {
+  return String(value || "").replace(/^\uFEFF/, "").trim();
 }
 
 function runClaude(prompt) {
