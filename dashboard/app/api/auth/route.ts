@@ -87,6 +87,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, method: 'oauth' })
   } catch (error: unknown) {
     const msg = error instanceof Error ? error.message : 'Failed to setup auth'
-    return NextResponse.json({ error: msg }, { status: 500 })
+    const status = msg.includes('Base URL') || msg.includes('OAuth tokens') ? 400 : 500
+    return NextResponse.json({ error: msg }, { status })
   }
 }

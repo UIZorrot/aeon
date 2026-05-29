@@ -22,9 +22,28 @@ test('stores Claude OAuth tokens separately', () => {
   assert.equal(config.baseUrl, '')
 })
 
+test('rejects Claude OAuth tokens with custom base URLs', () => {
+  assert.throws(
+    () => normalizeAuthConfig({ key: 'sk-ant-oat-abc123', baseUrl: 'https://api.deepseek.com/anthropic' }),
+    /Claude OAuth tokens cannot be used with a custom base URL/,
+  )
+})
+
+test('keeps empty auth payload on the Claude OAuth setup path', () => {
+  const config = normalizeAuthConfig({})
+
+  assert.equal(config.key, '')
+  assert.equal(config.secretName, 'CLAUDE_CODE_OAUTH_TOKEN')
+  assert.equal(config.method, 'oauth')
+})
+
 test('rejects invalid Anthropic-compatible base URLs', () => {
   assert.throws(
     () => normalizeAuthConfig({ key: 'deepseek-api-key', baseUrl: 'file:///tmp/key' }),
-    /Base URL must be an http\(s\) URL/,
+    /Base URL must be an HTTPS URL/,
+  )
+  assert.throws(
+    () => normalizeAuthConfig({ key: 'deepseek-api-key', baseUrl: 'http://api.deepseek.com/anthropic' }),
+    /Base URL must be an HTTPS URL/,
   )
 })
