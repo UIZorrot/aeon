@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { execFileSync, execSync } from 'child_process'
 import { ghAvailable, ghArgsRepo } from '@/lib/gh'
+import { normalizeAuthConfig } from '@/lib/auth-provider.mjs'
 
 export async function GET() {
   try {
@@ -14,8 +15,16 @@ export async function GET() {
     const secrets = out ? out.split('\n').filter(Boolean) : []
     const hasApiKey = secrets.includes('ANTHROPIC_API_KEY')
     const hasOauth = secrets.includes('CLAUDE_CODE_OAUTH_TOKEN')
+    let hasBaseUrl = false
 
-    return NextResponse.json({ authenticated: hasApiKey || hasOauth, hasApiKey, hasOauth })
+    try {
+      const vars = execFileSync('gh', ['variable', 'list', ...ghArgsRepo(), '--json', 'name', '-q', '.[].name'], {
+        stdio: 'pipe',
+      }).toString().trim()
+      hasBaseUrl = vars ? vars.split('\n').includes('ANTHROPIC_BASE_URL') : false
+    } catch {}
+
+    return NextResponse.json({ authenticated: hasApiKey || hasOauth, hasApiKey, hasOauth, hasBaseUrl })
   } catch {
     return NextResponse.json({ authenticated: false })
   }
@@ -27,24 +36,21 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'gh CLI not authenticated. Run: gh auth login' }, { status: 503 })
     }
 
-    const body = await request.json().catch(() => ({})) as { key?: string }
+    const body = await request.json().catch(() => ({})) as { key?: string, baseUrl?: string }
+    const config = normalizeAuthConfig(body)
 
-    if (body.key) {
-      const key = body.key.trim()
-      if (!key.startsWith('sk-ant-')) {
-        return NextResponse.json(
-          { error: 'Expected an Anthropic API key or Claude OAuth token starting with sk-ant-' },
-          { status: 400 },
-        )
-      }
-
-      const isOauth = key.startsWith('sk-ant-oat')
-      const secretName = isOauth ? 'CLAUDE_CODE_OAUTH_TOKEN' : 'ANTHROPIC_API_KEY'
-      execFileSync('gh', ['secret', 'set', secretName, ...ghArgsRepo()], {
-        input: key,
+    if (config.baseUrl) {
+      execFileSync('gh', ['variable', 'set', 'ANTHROPIC_BASE_URL', ...ghArgsRepo(), '--body', config.baseUrl], {
         stdio: ['pipe', 'pipe', 'pipe'],
       })
-      return NextResponse.json({ ok: true, method: isOauth ? 'oauth' : 'api-key', secret: secretName })
+    }
+
+    if (config.key) {
+      execFileSync('gh', ['secret', 'set', config.secretName, ...ghArgsRepo()], {
+        input: config.key,
+        stdio: ['pipe', 'pipe', 'pipe'],
+      })
+      return NextResponse.json({ ok: true, method: config.method, secret: config.secretName, baseUrl: Boolean(config.baseUrl) })
     }
 
     const output = execSync('claude setup-token', {
