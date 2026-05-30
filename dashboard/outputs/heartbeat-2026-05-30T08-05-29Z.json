@@ -1,0 +1,86 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "heartbeat",
+        "description": "Health check status"
+      },
+      "children": [
+        "stack-main"
+      ]
+    },
+    "stack-main": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "alert",
+        "grid-stats",
+        "text-last",
+        "text-no-other",
+        "link-status"
+      ]
+    },
+    "alert": {
+      "type": "Alert",
+      "props": {
+        "type": "error",
+        "title": "DEGRADED",
+        "message": "heartbeat has 5 consecutive failures (0% success)"
+      }
+    },
+    "grid-stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "sm"
+      },
+      "children": [
+        "stat-failures",
+        "stat-success"
+      ]
+    },
+    "stat-failures": {
+      "type": "Stat",
+      "props": {
+        "label": "Consecutive Failures",
+        "value": "5",
+        "trend": "down"
+      }
+    },
+    "stat-success": {
+      "type": "Stat",
+      "props": {
+        "label": "Success Rate",
+        "value": "0%",
+        "trend": "down"
+      }
+    },
+    "text-last": {
+      "type": "Text",
+      "props": {
+        "variant": "muted",
+        "text": "Last failed: 2026-05-29 23:43 UTC"
+      }
+    },
+    "text-no-other": {
+      "type": "Text",
+      "props": {
+        "variant": "body",
+        "text": "No other skills enabled"
+      }
+    },
+    "link-status": {
+      "type": "Link",
+      "props": {
+        "label": "Status Page",
+        "href": "docs/status.md"
+      }
+    }
+  }
+}
