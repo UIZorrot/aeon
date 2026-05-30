@@ -82,6 +82,11 @@ async function publish(snapshot) {
   const token = cleanEnv(process.env.RUNNER_INGEST_TOKEN);
 
   if (!url || !token) {
+    if (isAutomatedRuntime()) {
+      throw new Error(
+        "scanner publish is not configured: AGENT_SERVICE_OPPORTUNITIES_URL and RUNNER_INGEST_TOKEN are required in CI"
+      );
+    }
     console.log(JSON.stringify(snapshot, null, 2));
     return;
   }
@@ -98,6 +103,10 @@ async function publish(snapshot) {
   if (!response.ok) {
     throw new Error(`opportunity publish failed: ${response.status} ${await response.text()}`);
   }
+
+  console.log(
+    `published ${snapshot.opportunities.length} opportunities at ${snapshot.generatedAt} to ${redactUrl(url)}`
+  );
 }
 
 async function fetchJson(url, headers = {}) {
@@ -184,6 +193,19 @@ function parseJson(value) {
 
 function cleanEnv(value) {
   return String(value || "").replace(/^\uFEFF/, "").trim();
+}
+
+function isAutomatedRuntime() {
+  return process.env.GITHUB_ACTIONS === "true" || process.env.CI === "true";
+}
+
+function redactUrl(value) {
+  try {
+    const url = new URL(value);
+    return `${url.origin}${url.pathname}`;
+  } catch {
+    return "configured endpoint";
+  }
 }
 
 main().catch((error) => {
