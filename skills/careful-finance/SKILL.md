@@ -29,6 +29,8 @@ Common filters:
 - `minDefiTvlUsd`
 - `maxDefiLockDays`
 
+Default public shortlist standards are intentionally selective: DeFi yield should generally clear 10% APY, $1m TVL, and 60d max lock; perp routes should generally clear 30% estimated funding APR, $250k usable two-sided depth, and 25 bps max book cost; stablecoin CEX price-gap routes should generally clear 8 bps spread and $250k usable size. Treat lower-quality rows as raw data, not public top opportunities.
+
 ## Data Sources
 
 Run:
@@ -84,6 +86,8 @@ For stablecoin DeFi opportunities, explain:
 If no opportunities are supplied, say that no opportunity passed the current filters.
 
 Keep the answer concise and operational. Prefer stablecoin DeFi opportunities first, then stablecoin CEX, then perpetual futures unless the user's `${var}` asks for a different scope.
+
+Do not include internal run details in public output. Never mention dashboard output paths, pending write approval, GitHub Actions mechanics, stdout/stderr, `./notify`, notification decisions, cache publish mechanics, or private operator process. Public output should only contain market analysis, data freshness, opportunity details, and market-specific caveats.
 
 If notable opportunities exist, call:
 

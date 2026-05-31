@@ -17,7 +17,7 @@ async function main() {
   }
 
   const structured = buildStructuredAnalysis(snapshot);
-  const summaryMarkdown = await buildSummaryMarkdown(snapshot, structured);
+  const summaryMarkdown = sanitizeAnalysisMarkdown(await buildSummaryMarkdown(snapshot, structured));
   const nextSnapshot = {
     ...snapshot,
     analysis: {
@@ -45,6 +45,8 @@ async function buildSummaryMarkdown(snapshot, structured) {
     "The audience is a frontend LLM that will use this cached analysis to answer later user questions.",
     "Keep it structured, specific, and conservative. Do not invent data.",
     "Include sections for summary, market regime, best current setups, main risks, and what to watch next.",
+    "Write only end-user market analysis. Do not mention internal files, dashboard paths, write approval, pending approval, GitHub Actions, workflow details, ./notify, notification decisions, stdout/stderr, cache publish mechanics, or private operator process.",
+    "Do not include generic legal/disclaimer boilerplate. Keep caveats specific to the market data and opportunity risk.",
     "",
     "Snapshot metadata:",
     JSON.stringify(
@@ -65,11 +67,35 @@ async function buildSummaryMarkdown(snapshot, structured) {
   ].join("\n");
 
   try {
-    const output = await runClaude(prompt);
+    const output = sanitizeAnalysisMarkdown(await runClaude(prompt));
     return output || deterministicSummaryMarkdown(snapshot, structured);
   } catch {
     return deterministicSummaryMarkdown(snapshot, structured);
   }
+}
+
+function sanitizeAnalysisMarkdown(value) {
+  const lines = String(value || "").split("\n");
+  const blocked = [
+    /dashboard\/outputs/i,
+    /\.pending/i,
+    /pending write approval/i,
+    /write approval/i,
+    /skipped\s+\.\/notify/i,
+    /\.\/notify/i,
+    /notification decisions?/i,
+    /github actions?/i,
+    /workflow/i,
+    /stdout|stderr/i,
+    /^file:\s/i,
+    /cache publish/i
+  ];
+
+  return lines
+    .filter((line) => !blocked.some((pattern) => pattern.test(line)))
+    .join("\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
 }
 
 function deterministicSummaryMarkdown(snapshot, structured) {

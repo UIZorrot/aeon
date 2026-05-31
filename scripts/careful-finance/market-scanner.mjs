@@ -14,13 +14,15 @@ const DEFAULT_FILTERS = {
   venues: ["bitget", "binance", "okx", "aster", "hyperliquid"],
   minSpreadBps: 5,
   maxSpreadBps: 500,
-  maxAskBidSpreadBps: 50,
+  maxAskBidSpreadBps: 25,
   maxSingleSideCostPct: 1,
-  minDepthUsd: 50000,
-  minDefiApyPct: 3,
+  minDepthUsd: 250000,
+  minFundingCarryAprPct: 30,
+  minStablecoinSpreadBps: 8,
+  minDefiApyPct: 10,
   minDefiTvlUsd: 1000000,
-  maxDefiLockDays: 120,
-  maxResults: 25,
+  maxDefiLockDays: 60,
+  maxResults: 100,
   includeFunding: true
 };
 
@@ -50,10 +52,10 @@ async function main() {
     barkerDefiResult.status === "fulfilled" ? buildStablecoinDefiOpportunities(barkerDefiResult.value, filters) : [];
   const stablecoinOpportunities = [...stablecoinDexOpportunities, ...stablecoinCexOpportunities]
     .sort((a, b) => Number(b.scoreBps || 0) - Number(a.scoreBps || 0))
-    .slice(0, Math.min(Math.max(Math.round(Number(filters.maxResults) || 25), 1), 100));
+    .slice(0, Math.min(Math.max(Math.round(Number(filters.maxResults) || 100), 1), 100));
   const opportunities = [...perpOpportunities, ...stablecoinOpportunities]
     .sort((a, b) => Number(b.scoreBps || 0) - Number(a.scoreBps || 0))
-    .slice(0, Math.min(Math.max(Math.round(Number(filters.maxResults) || 25), 1), 100));
+    .slice(0, Math.min(Math.max(Math.round(Number(filters.maxResults) || 100), 1), 100));
   const snapshot = {
     source: "astro_pulse+barker",
     generatedAt: new Date().toISOString(),

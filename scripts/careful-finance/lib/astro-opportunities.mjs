@@ -16,8 +16,9 @@ export function buildPerpPerpOpportunities(payload, filters = {}) {
   const minSpreadBps = numberOr(filters.minSpreadBps, 0);
   const maxSpreadBps = numberOr(filters.maxSpreadBps, 500);
   const maxAskBidSpreadBps = numberOr(filters.maxAskBidSpreadBps, 50);
-  const minLiquidityUsd = numberOr(filters.minLiquidityUsd, 0);
-  const maxResults = Math.min(Math.max(Math.round(numberOr(filters.maxResults, 10)), 1), 50);
+  const minFundingCarryAprPct = numberOr(filters.minFundingCarryAprPct, Number.NEGATIVE_INFINITY);
+  const minLiquidityUsd = numberOr(filters.minLiquidityUsd ?? filters.minDepthUsd, 0);
+  const maxResults = Math.min(Math.max(Math.round(numberOr(filters.maxResults, 100)), 1), 100);
   const opportunities = [];
 
   for (const [symbol, symbolMarkets] of bySymbol.entries()) {
@@ -35,6 +36,9 @@ export function buildPerpPerpOpportunities(payload, filters = {}) {
         if (spreadBps > maxSpreadBps) continue;
 
         const fundingCarryBps = shortMarket.fundingBps - longMarket.fundingBps;
+        const fundingCarryAprPct = (fundingCarryBps * 3 * 365) / 100;
+        if (fundingCarryAprPct < minFundingCarryAprPct) continue;
+
         opportunities.push({
           kind: "perp_perp",
           source: "astro_pulse",
