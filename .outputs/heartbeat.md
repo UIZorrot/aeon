@@ -1,12 +1,16 @@
-**HEARTBEAT_OK · STATUS_PAGE=OK**
+HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md
 
 ## Summary
 
-All heartbeat checks passed clean. This is the first run where the fleet has fully recovered:
+**Heartbeat run at 20:41 UTC — all clear.** 🟢
 
-- **P0**: No flags. Heartbeat's success rate climbed to exactly 0.5 (5/10), clearing the chronic failure threshold (`< 0.5` no longer fires). No failed or stuck skills, zero consecutive failures.
-- **P1**: No open PRs, issues disabled.
-- **P2**: MEMORY.md has no flagged items.
-- **P3**: Only `heartbeat` is enabled in `aeon.yml`; it's tracked and within schedule tolerance.
+- **P0 (Failed/stuck skills)**: Clean. Heartbeat is the only tracked skill — `success_rate` now 55% (6/11), `consecutive_failures=0`, no hangs or API degradation.
+- **P1 (Stalled PRs / urgent issues)**: No open PRs. GitHub issues are disabled on this repo.
+- **P2 (Flagged memory)**: MEMORY.md clean, nothing flagged for follow-up.
+- **P3 (Missing scheduled skills)**: Only `heartbeat` is enabled in `aeon.yml`. It's tracked in `cron-state.json` and well within schedule tolerance.
 
-**Status page** updated at `docs/status.md` — overall status shifted from 🔴 DEGRADED to 🟢 OK. No notification sent since nothing needs attention.
+**Files modified:**
+- `docs/status.md` — regenerated with updated timestamps, 🟢 OK overall status
+- `memory/logs/2026-05-31.md` — appended run log entry
+
+No notification sent — nothing requires attention.
