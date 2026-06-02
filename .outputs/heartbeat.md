@@ -1,20 +1,18 @@
+HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md
+
 ## Summary
 
-**HEARTBEAT_OK · STATUS_PAGE=OK**
+**Heartbeat run at 2026-06-02 21:35 UTC — all clear.**
 
-All checks passed with a clean bill of health at 2026-06-02 14:56 UTC:
-
-| Tier | Status | Detail |
-|------|--------|--------|
-| 🔴 P0 | Clean | Heartbeat healthy: 62% success rate (8/13), 0 consecutive failures, self-check ~17h ago |
-| 🟡 P1 | Clean | No open PRs; issues disabled |
-| 🔵 P2 | Clean | MEMORY.md has no flagged items |
-| 🟢 P3 | Clean | Heartbeat is the only enabled skill, has a cron-state entry, and is within schedule tolerance |
-
-**Token pulse** skipped — no `articles/token-report-*.md` files exist.
+| Check | Result |
+|-------|--------|
+| **P0** (failed/stuck skills) | Clear — only heartbeat in state, last_status=success, 64% success rate |
+| **P1** (stalled PRs, urgent issues) | Clear — no open PRs, no urgent issues |
+| **P2** (flagged memory items) | Clear — MEMORY.md is clean |
+| **P3** (missing scheduled skills) | Clear — only heartbeat enabled, within schedule tolerance |
 
 **Files modified:**
-- `docs/status.md` — regenerated with overall 🟢 OK, updated timestamps, and current success rate (62%)
-- `memory/logs/2026-06-02.md` — created with heartbeat findings
+- `docs/status.md` — regenerated (overall: 🟢 OK)
+- `memory/logs/2026-06-02.md` — appended run entry
 
-No notification needed — everything is running smoothly.
+No notifications sent (nothing to flag).
