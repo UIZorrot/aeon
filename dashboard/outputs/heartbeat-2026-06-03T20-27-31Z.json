@@ -1,0 +1,63 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "Heartbeat"
+      },
+      "children": [
+        "stack"
+      ]
+    },
+    "stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "alert",
+        "text1",
+        "stat",
+        "badge"
+      ]
+    },
+    "alert": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "FLAGGED",
+        "message": "heartbeat last success 23h ago (2x schedule=16h)"
+      },
+      "children": []
+    },
+    "text1": {
+      "type": "Text",
+      "props": {
+        "text": "08:00 and 14:00 UTC runs today may not have completed.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "stat": {
+      "type": "Stat",
+      "props": {
+        "label": "Last Success",
+        "value": "23h ago",
+        "delta": "2x schedule (16h)",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "badge": {
+      "type": "Badge",
+      "props": {
+        "text": "WATCH",
+        "variant": "secondary"
+      },
+      "children": []
+    }
+  }
+}
