@@ -2,7 +2,7 @@ name: Careful Finance Market Scanner
 
 on:
   schedule:
-    - cron: "3,33 * * * *"
+    - cron: "3 * * * *"
   workflow_dispatch:
     inputs:
       filters:
