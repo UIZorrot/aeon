@@ -1,26 +1,16 @@
-**HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md**
+All checks passed. Nothing to notify about.
 
 ## Summary
 
-All checks ran clean at the 14:00 UTC slot. No notification needed.
+**HEARTBEAT_OK · STATUS_PAGE=OK — wrote `docs/status.md`**
 
-### P0 — Failed & stuck skills
-- ✅ Heartbeat `last_status: success`, `consecutive_failures: 0`, `success_rate: 78%` (18/23)
-- ✅ No failed, stuck, degraded, or chronically failing skills
-- ✅ Self-check: last success ~4.6h ago, well within 36h threshold
+- **P0**: All clear — heartbeat `last_status=success`, `consecutive_failures=0`, `success_rate=79%` (19/24), self-check within 36h (~6h)
+- **P1**: No open PRs; issues disabled on repo
+- **P2**: MEMORY.md clean, no flagged items
+- **P3**: Only heartbeat enabled in `aeon.yml`; last success ~6h ago, well within 2× max schedule interval (~20h)
+- **Token pulse**: Skipped — no `articles/token-report-*.md` files exist
+- **Overall status**: 🟢 OK
 
-### P1 — Stalled PRs & urgent issues
-- ✅ No open PRs; issues disabled on this repo
-
-### P2 — Flagged memory items
-- ✅ MEMORY.md clean, nothing flagged
-
-### P3 — Missing scheduled skills
-- ✅ Only `heartbeat` enabled. `last_success` ~4.6h ago vs 2× schedule interval (12h) — well within tolerance
-
-### Token pulse
-- Skipped — no `articles/token-report-*.md` files exist
-
-### Files updated
-- `docs/status.md` — refreshed with 🟢 OK, updated timestamp, current skill stats
-- `memory/logs/2026-06-06.md` — appended heartbeat run entry
+**Files modified:**
+- `docs/status.md` — regenerated with current fleet health
+- `memory/logs/2026-06-06.md` — appended third heartbeat entry for today
