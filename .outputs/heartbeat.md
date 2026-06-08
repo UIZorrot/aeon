@@ -2,17 +2,18 @@
 
 ## Summary
 
-All checks passed — no flags fired:
+All priority checks passed with no flags:
 
-| Priority | Check | Result |
-|----------|-------|--------|
-| P0 | Failed/stuck/degraded skills | ✅ None — only heartbeat tracked, all green |
-| P1 | Stalled PRs & urgent issues | ✅ No open PRs |
-| P2 | Flagged memory items | ✅ None |
-| P3 | Missing scheduled skills | ✅ Only heartbeat enabled; running on schedule |
+| Tier | Check | Result |
+|------|-------|--------|
+| P0 | Failed/stuck skills, API degradation, chronic failures | All clear — only heartbeat in state, 83% success rate, 0 consecutive failures |
+| P0 | Self-check | `last_success` 2026-06-08 15:01 UTC — ~5h ago, well within 36h threshold |
+| P1 | Stalled PRs / urgent issues | No open PRs; issues disabled on repo |
+| P2 | Flagged memory items | Nothing flagged |
+| P3 | Missing scheduled skills | Only heartbeat enabled — has state entry, last success ~5h ago vs 2× max interval of 24h |
 
-**Files written:**
-- `docs/status.md` — regenerated with overall 🟢 OK, updated timestamp, skill health table
-- `memory/logs/2026-06-08.md` — daily log entry
+**Files modified:**
+- `docs/status.md` — updated (🟢 OK, 20:13 UTC, next run 08:00 UTC)
+- `memory/logs/2026-06-08.md` — appended heartbeat run entry
 
-No notification needed — all clear.
+**Notification:** Skipped — nothing to report.
