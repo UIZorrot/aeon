@@ -26,7 +26,11 @@ function normalizeBaseUrl(value) {
   try {
     url = new URL(value)
   } catch {
+<<<<<<< HEAD
     throw new Error('Base URL must be an HTTPS URL')
+=======
+    throw new Error('Base URL must be an http(s) URL')
+>>>>>>> upstream/main
   }
 
   if (url.protocol !== 'https:') {

@@ -21,10 +21,14 @@ export function AuthModal({ loading, onClose, onAuth }: AuthModalProps) {
           <h2 className="font-display text-xl">Authenticate</h2>
           <button onClick={onClose} className="text-primary-35 hover:text-primary-100 text-lg">&times;</button>
         </div>
+<<<<<<< HEAD
         <p className="text-xs text-primary-50 font-mono mb-[var(--space-md)]">
           Use an Anthropic API key, an Anthropic-compatible key, or connect a Claude subscription token.
         </p>
         <div className="text-[11px] font-mono uppercase tracking-[1px] text-primary-35 mb-2">API key</div>
+=======
+        <p className="text-xs text-primary-50 font-mono mb-[var(--space-md)]">Paste an Anthropic or Anthropic-compatible API key, or connect a Claude subscription token.</p>
+>>>>>>> upstream/main
         <input type="password" value={authKey} onChange={(e) => setAuthKey(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && submit()} placeholder="API key" autoFocus className={`${inputCls} mb-[var(--space-sm)]`} />
         <input type="url" value={baseUrl} onChange={(e) => setBaseUrl(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && submit()} placeholder="Optional base URL, e.g. https://api.deepseek.com/anthropic" className={`${inputCls} mb-[var(--space-md)]`} />
         <button onClick={submit} disabled={!authKey.trim() || loading} className="w-full bg-aeon-fg text-aeon-bg text-sm py-3 font-mono uppercase tracking-[2px] hover:opacity-90 transition-opacity disabled:opacity-50">{loading ? '...' : 'Save API Key'}</button>
