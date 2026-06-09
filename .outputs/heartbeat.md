@@ -1,19 +1,19 @@
-## HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md
+HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md
 
-All checks across all priority tiers are green:
-
-- **P0**: All clear. Heartbeat is the only active skill — `last_status=success`, success rate 84% (26/31), 0 consecutive failures. Self-check: last success ~5.7h ago, well within the 36h threshold.
-- **P1**: No open PRs; issues disabled on this repo.
-- **P2**: MEMORY.md has no flagged items.
-- **P3**: Only heartbeat is enabled in `aeon.yml`. It has a cron-state entry and is running on schedule.
-- **Token pulse**: Skipped — no `articles/token-report-*.md` files exist.
-
-No notification sent — nothing requires attention.
+---
 
 ## Summary
 
-| What | Detail |
+**Heartbeat run complete (2026-06-09 ~20:34 UTC).** All priority tiers clear:
+
+| Tier | Result |
 |------|--------|
-| **Files modified** | `docs/status.md` (regenerated), `memory/logs/2026-06-09.md` (appended) |
-| **Overall health** | 🟢 OK |
-| **Next run** | heartbeat at 20:00 UTC |
+| **P0** — Failed/stuck skills | ✅ Clear. Heartbeat success_rate=84% (27/32), consecutive_failures=0, last_success 6.5h ago. |
+| **P1** — Stalled PRs / urgent issues | ✅ Clear. No open PRs; issues disabled on repo. |
+| **P2** — Flagged memory items | ✅ Clear. MEMORY.md has no new flagged items. |
+| **P3** — Missing scheduled skills | ✅ Clear. Only heartbeat enabled; well within 2× schedule interval. |
+| **Token pulse** | Skipped — no `articles/token-report-*.md` files. |
+
+**Files modified:**
+- `docs/status.md` — refreshed with updated timestamps (🟢 OK, 20:34 UTC)
+- `memory/logs/2026-06-09.md` — appended third heartbeat entry for today
