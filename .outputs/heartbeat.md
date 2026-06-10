@@ -1,19 +1,19 @@
-HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md
+**HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md**
 
----
-
-## Summary
-
-**Heartbeat run complete (2026-06-09 ~20:34 UTC).** All priority tiers clear:
+All checks clear across all priority levels:
 
 | Tier | Result |
 |------|--------|
-| **P0** — Failed/stuck skills | ✅ Clear. Heartbeat success_rate=84% (27/32), consecutive_failures=0, last_success 6.5h ago. |
-| **P1** — Stalled PRs / urgent issues | ✅ Clear. No open PRs; issues disabled on repo. |
-| **P2** — Flagged memory items | ✅ Clear. MEMORY.md has no new flagged items. |
-| **P3** — Missing scheduled skills | ✅ Clear. Only heartbeat enabled; well within 2× schedule interval. |
-| **Token pulse** | Skipped — no `articles/token-report-*.md` files. |
+| **P0** | All clear — no failed, stuck, or degraded skills. Heartbeat success_rate=85%, 0 consecutive failures. Self-check: last_success 25h ago (threshold: 36h). |
+| **P1** | No open PRs; issues disabled on repo. |
+| **P2** | MEMORY.md clean — no flagged items needing follow-up. |
+| **P3** | Only heartbeat enabled. last_success well within 2× schedule interval. |
+| **Token pulse** | Skipped — no `articles/token-report-*.md` files exist. |
+| **Status page** | Regenerated `docs/status.md` — 🟢 OK. |
 
-**Files modified:**
-- `docs/status.md` — refreshed with updated timestamps (🟢 OK, 20:34 UTC)
-- `memory/logs/2026-06-09.md` — appended third heartbeat entry for today
+No notification sent — nothing flagged.
+
+## Summary
+
+- **Files written:** `docs/status.md` (regenerated), `memory/logs/2026-06-10.md` (new daily log)
+- **Follow-up:** None needed. Next scheduled heartbeat at 08:00 UTC.
