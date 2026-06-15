@@ -2,21 +2,14 @@
 
 **HEARTBEAT_OK · STATUS_PAGE=OK**
 
-All checks passed:
+- **P0**: All clear — only heartbeat in cron-state, running healthy at 89% success rate, no failures/stuck/degraded.
+- **P1**: No open PRs, no urgent issues.
+- **P2**: MEMORY.md clean, no flagged items.
+- **P3**: Only heartbeat enabled; its last success (~13.5h ago) is well within 2× max schedule interval.
+- **Token pulse**: Skipped — no token-report articles exist.
 
-| Tier | Check | Result |
-|------|-------|--------|
-| **P0** | Failed/stuck skills | Clear — heartbeat success_rate=88%, 0 consecutive failures |
-| **P0** | API degradation | None |
-| **P0** | Chronic failures | None |
-| **P0** | Self-check | Last success ~6h ago, well within 36h |
-| **P1** | Stalled PRs | No open PRs |
-| **P1** | Urgent issues | Issues disabled on repo |
-| **P2** | Flagged memory | Nothing flagged |
-| **P3** | Missing skills | Only heartbeat enabled, running on schedule |
+**Files written:**
+- `docs/status.md` — regenerated status page (🟢 OK, updated 2026-06-15 09:49 UTC)
+- `memory/logs/2026-06-15.md` — daily log entry
 
-**Files modified:**
-- `docs/status.md` — regenerated with 🟢 OK, updated timestamp, current skill health table
-- `memory/logs/2026-06-14.md` — appended HEARTBEAT_OK entry
-
-No notification sent — nothing needs attention.
+No notification needed — nothing requires attention.
