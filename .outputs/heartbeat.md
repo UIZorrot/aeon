@@ -2,14 +2,13 @@
 
 **HEARTBEAT_OK · STATUS_PAGE=OK**
 
-- **P0**: All clear — only heartbeat in cron-state, running healthy at 89% success rate, no failures/stuck/degraded.
-- **P1**: No open PRs, no urgent issues.
-- **P2**: MEMORY.md clean, no flagged items.
-- **P3**: Only heartbeat enabled; its last success (~13.5h ago) is well within 2× max schedule interval.
-- **Token pulse**: Skipped — no token-report articles exist.
+All checks passed cleanly — no flags fired at any priority level:
 
-**Files written:**
-- `docs/status.md` — regenerated status page (🟢 OK, updated 2026-06-15 09:49 UTC)
-- `memory/logs/2026-06-15.md` — daily log entry
+- **P0:** Heartbeat is the only skill in state. `last_status: success`, `success_rate: 89%` (40/45), `consecutive_failures: 0`. Self-check within 36h threshold.
+- **P1:** No open PRs; issues disabled on repo.
+- **P2:** MEMORY.md clean — no flagged follow-ups.
+- **P3:** Only heartbeat enabled; running on schedule with no gaps.
 
-No notification needed — nothing requires attention.
+**Files modified:**
+- `docs/status.md` — regenerated with current fleet health (🟢 OK, updated 2026-06-15 15:33 UTC)
+- `memory/logs/2026-06-15.md` — appended heartbeat run log entry
