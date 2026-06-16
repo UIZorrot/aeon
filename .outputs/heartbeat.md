@@ -1,14 +1,16 @@
-## Summary
+## HEARTBEAT_OK · STATUS_PAGE=OK
 
-**HEARTBEAT_OK · STATUS_PAGE=OK**
+All clear across every tier:
 
-All checks passed cleanly — no flags fired at any priority level:
+| Tier | Check | Result |
+|------|-------|--------|
+| P0 | Failed/stuck skills | None — heartbeat `last_status=success`, `consecutive_failures=0` |
+| P0 | API degradation | None |
+| P0 | Chronic failures | None — `success_rate=89%` (41/46) |
+| P0 | Self-check | Healthy — `last_success` ~17h ago (threshold: 36h) |
+| P1 | Stalled PRs | No open PRs |
+| P1 | Urgent issues | Issues disabled on repo |
+| P2 | Flagged memory | MEMORY.md clean |
+| P3 | Missing skills | Only heartbeat enabled, well within 2× schedule tolerance |
 
-- **P0:** Heartbeat is the only skill in state. `last_status: success`, `success_rate: 89%` (40/45), `consecutive_failures: 0`. Self-check within 36h threshold.
-- **P1:** No open PRs; issues disabled on repo.
-- **P2:** MEMORY.md clean — no flagged follow-ups.
-- **P3:** Only heartbeat enabled; running on schedule with no gaps.
-
-**Files modified:**
-- `docs/status.md` — regenerated with current fleet health (🟢 OK, updated 2026-06-15 15:33 UTC)
-- `memory/logs/2026-06-15.md` — appended heartbeat run log entry
+No notification needed — nothing to flag.
