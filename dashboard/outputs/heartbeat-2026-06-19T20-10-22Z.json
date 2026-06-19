@@ -1,0 +1,57 @@
+{
+  "root": "card-1",
+  "state": {},
+  "elements": {
+    "card-1": {
+      "type": "Card",
+      "props": {
+        "title": "Heartbeat"
+      },
+      "children": [
+        "stack-1"
+      ]
+    },
+    "stack-1": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "alert-1",
+        "text-1",
+        "text-2",
+        "badge-1"
+      ]
+    },
+    "alert-1": {
+      "type": "Alert",
+      "props": {
+        "title": "Schedule Missed",
+        "message": "3 runs missed today (08:00, 14:00, 20:00 UTC) — last success ~24h ago. Running now manually.",
+        "type": "warning"
+      }
+    },
+    "text-1": {
+      "type": "Text",
+      "props": {
+        "text": "Missed runs: 08:00, 14:00, 20:00 UTC",
+        "variant": "body"
+      }
+    },
+    "text-2": {
+      "type": "Text",
+      "props": {
+        "text": "Last success ~24h ago. Running now manually.",
+        "variant": "muted"
+      }
+    },
+    "badge-1": {
+      "type": "Badge",
+      "props": {
+        "text": "🟡 WATCH",
+        "variant": "secondary"
+      }
+    }
+  }
+}
