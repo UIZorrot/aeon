@@ -2,19 +2,15 @@ HEARTBEAT_OK · STATUS_PAGE=OK
 
 ## Summary
 
-All checks passed with nothing needing attention:
+**What I did:** Ran the heartbeat skill — a full ambient health check across all priority tiers.
 
-| Tier | Check | Result |
-|------|-------|--------|
-| P0 | Failed/stuck skills | Clear — heartbeat success_rate 92% (54/59), 0 consecutive failures |
-| P0 | API degradation | Clear |
-| P0 | Chronic failures | Clear |
-| P0 | Self-check | Last success 12h32m ago, well within 36h threshold |
-| P1 | Stalled PRs | No open PRs |
-| P1 | Urgent issues | Issues disabled on repo |
-| P2 | Memory items | Clean, nothing flagged |
-| P3 | Missing skills | Only heartbeat enabled, reporting on schedule |
+**Findings — all clear:**
+- **P0**: cron-state.json shows only heartbeat, with `success_rate=92%` (55/60), `consecutive_failures=0`. No failed, stuck, degraded, or chronically failing skills. Self-check: last_success ~6h ago, well within 36h threshold.
+- **P1**: No open PRs; issues disabled on this repo.
+- **P2**: MEMORY.md is clean — no flagged follow-ups.
+- **P3**: Only heartbeat is enabled in `aeon.yml`. Its entry exists in cron-state and last_success is well within 2× the schedule interval.
+- **Token pulse**: Skipped — no `articles/token-report-*.md` files exist.
 
 **Files modified:**
-- `docs/status.md` — regenerated with overall 🟢 OK, updated timestamp
-- `memory/logs/2026-06-23.md` — created with run details
+- `docs/status.md` — Regenerated with current timestamps and fleet health (🟢 OK)
+- `memory/logs/2026-06-23.md` — Appended run entry
