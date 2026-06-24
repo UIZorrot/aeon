@@ -1,22 +1,25 @@
-**HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md**
+## HEARTBEAT_OK · STATUS_PAGE=OK
 
-All priority tiers clear:
+All checks pass. Here's the full rundown:
 
-| Tier | Check | Result |
-|------|-------|--------|
-| **P0** | Failed/stuck skills | None — only heartbeat in fleet, status=success |
-| **P0** | API degradation | None — consecutive_failures=0 |
-| **P0** | Chronic failures | None — success_rate=92% |
-| **P0** | Heartbeat self-check | Pass — last_success ~11.5h ago (< 36h) |
-| **P1** | Stalled PRs / urgent issues | None — no open PRs, issues disabled |
-| **P2** | Flagged memory items | None |
-| **P3** | Missing scheduled skills | Only heartbeat enabled; last_success within 2× schedule interval |
+**P0 — Failed & stuck skills:** All clear. Heartbeat is the only skill with state, success_rate=92% (58/63), consecutive_failures=0, last_success ~7h15m ago (well within 36h self-check threshold).
 
-No token report files exist — token pulse section omitted. No open issues. Status page updated: overall 🟢 OK.
+**P1 — Stalled PRs & urgent issues:** No open PRs. Issues are disabled on this repo.
+
+**P2 — Flagged memory items:** MEMORY.md is clean.
+
+**P3 — Missing scheduled skills:** Only heartbeat is enabled (`aeon.yml`). Its last_success is ~7h ago vs a 2× schedule interval of 16h — well within tolerance.
+
+**Token pulse:** Skipped — no `articles/token-report-*.md` files exist.
+
+**Status page:** Updated `docs/status.md` — overall 🟢 OK, timestamped 2026-06-24 15:57 UTC, next run at 20:00 UTC.
+
+**Notification:** None needed — nothing to flag.
+
+---
 
 ## Summary
 
-- **Read**: `skills/heartbeat/SKILL.md`, `memory/cron-state.json`, `aeon.yml`, `memory/MEMORY.md`, `memory/logs/2026-06-23.md`, `memory/issues/INDEX.md`, `soul/SOUL.md`, `soul/STYLE.md`
-- **Modified**: `docs/status.md` — regenerated with current timestamps and skill health
-- **Created**: `memory/logs/2026-06-24.md` — daily log entry
-- **Follow-up**: None needed. Next heartbeat at 14:00 UTC.
+- **Checks performed:** P0 (failed/stuck skills, API degradation, chronic failures, self-check), P1 (stalled PRs, urgent issues), P2 (flagged memory items), P3 (missing scheduled skills)
+- **Files modified:** `docs/status.md` (regenerated with current state), `memory/logs/2026-06-24.md` (appended run entry)
+- **Outcome:** HEARTBEAT_OK — no notifications sent, no follow-up needed
