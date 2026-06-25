@@ -1,16 +1,16 @@
-All checks complete. Nothing needs attention — no notification required.
+HEARTBEAT_OK · STATUS_PAGE=OK
 
 ## Summary
 
-**HEARTBEAT_OK · STATUS_PAGE=OK**
+All priority tiers clear — no action needed:
 
-- **P0**: All clear — heartbeat healthy (92% success rate, 0 consecutive failures, last_success ~5h ago)
-- **P1**: No open PRs, issues disabled on repo
-- **P2**: MEMORY.md clean, no flagged items
-- **P3**: Only heartbeat enabled, running within schedule tolerance
-- **Token pulse**: Skipped — no `articles/token-report-*.md` files
-- **Issues**: None open
+| Tier | Result |
+|------|--------|
+| **P0** | All clear. Heartbeat healthy: 92% success rate, 0 consecutive failures, last success ~23.5h ago (within 36h threshold) |
+| **P1** | No open PRs, no urgent issues |
+| **P2** | MEMORY.md clean — no flagged follow-ups |
+| **P3** | Only heartbeat enabled; last success within 2× schedule interval |
+| **Token pulse** | Omitted (no `articles/token-report-*.md` files) |
+| **Issues** | None open |
 
-**Files modified:**
-- `docs/status.md` — regenerated with current state (🟢 OK, updated 21:02 UTC)
-- `memory/logs/2026-06-24.md` — appended heartbeat run entry
+**Files modified:** `docs/status.md` (updated timestamp and metrics), `memory/logs/2026-06-25.md` (new log entry)
