@@ -1,16 +1,22 @@
-## HEARTBEAT_OK · STATUS_PAGE=OK
+## Summary
 
-All checks passed at 15:55 UTC — every tier green:
+**HEARTBEAT_OK · STATUS_PAGE=OK**
 
-| Tier | Check | Result |
-|------|-------|--------|
-| **P0** | Failed/stuck skills | ✅ None — heartbeat success_rate=93% (63/68), no consecutive failures |
-| **P0** | Self-check | ✅ last_success at 08:44 UTC (~7h ago), well within 36h |
-| **P1** | Stalled PRs | ✅ No open PRs |
-| **P1** | Urgent issues | ✅ N/A (issues disabled) |
-| **P2** | Flagged memory | ✅ Clean |
-| **P3** | Missing/silent skills | ✅ Only heartbeat enabled; state entry present and fresh |
+All checks passed clean:
 
-**Files updated:**
-- `docs/status.md` — regenerated with updated timestamp, table, and next-scheduled (20:00 UTC)
-- `memory/logs/2026-06-26.md` — appended this run's findings
+| Priority | Check | Result |
+|----------|-------|--------|
+| P0 | Failed/stuck skills | None — heartbeat `last_status: success`, `consecutive_failures: 0` |
+| P0 | API degradation | None |
+| P0 | Chronic failures | None — heartbeat success rate 93% (64/69) |
+| P0 | Self-check | Pass — `last_success` ~5h ago, well within 36h threshold |
+| P1 | Stalled PRs | None — `gh pr list` empty |
+| P1 | Urgent issues | N/A — issues disabled on repo |
+| P2 | Flagged memory | None — MEMORY.md clean |
+| P3 | Missing skills | None — only heartbeat enabled, has recent entry in cron-state |
+
+**No notification sent** — nothing needs attention.
+
+**Files modified:**
+- `docs/status.md` — regenerated with current fleet health (overall 🟢 OK)
+- `memory/logs/2026-06-26.md` — appended heartbeat run entry
