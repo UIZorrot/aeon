@@ -1,14 +1,19 @@
-HEARTBEAT_OK · STATUS_PAGE=OK
-
 ## Summary
 
-| Check | Result |
-|-------|--------|
-| **P0** — Failed/stuck skills | ✅ All clear. Heartbeat success_rate=93% (65/70), no failures, not stuck. Self-check: last_success ~11h ago, within 36h threshold. |
-| **P1** — Stalled PRs & urgent issues | ✅ No open PRs; issues disabled on repo. |
-| **P2** — Flagged memory items | ✅ MEMORY.md clean. |
-| **P3** — Missing scheduled skills | ✅ Only heartbeat enabled; last_success within 2× schedule tolerance. |
-| **Token pulse** | Skipped — no `articles/token-report-*.md` files. |
-| **Status page** | Updated `docs/status.md` — 🟢 OK |
+**HEARTBEAT_OK · STATUS_PAGE=OK**
 
-**Files modified:** `docs/status.md`, `memory/logs/2026-06-27.md`
+All checks passed — no flags fired:
+
+| Priority | Check | Result |
+|----------|-------|--------|
+| P0 | Failed/stuck skills | ✅ None |
+| P0 | API degradation (≥3 consecutive) | ✅ None |
+| P0 | Chronic failures (<50% rate) | ✅ None |
+| P0 | Heartbeat self-check (≤36h stale) | ✅ last success 6.5h ago |
+| P1 | Stalled PRs / urgent issues | ✅ None |
+| P2 | Flagged memory items | ✅ None |
+| P3 | Missing/overdue scheduled skills | ✅ Heartbeat on track |
+
+**Files updated:**
+- `docs/status.md` — regenerated with overall 🟢 OK, updated timestamp (14:45 UTC), next run at 20:00 UTC
+- `memory/logs/2026-06-27.md` — appended heartbeat run entry
