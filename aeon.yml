@@ -35,7 +35,7 @@ skills:
   treasury-info: { enabled: false, schedule: "0 12 * * *" }
   distribute-tokens: { enabled: false, schedule: "workflow_dispatch", var: "" } # on-demand — var: distribution list label
   defi-overview: { enabled: false, schedule: "0 12 * * *" }
-  careful-finance: { enabled: false, schedule: "workflow_dispatch", model: "deepseek-v4-flash", var: "" } # on-demand or scheduled Careful Finance opportunity summaries
+  careful-finance: { enabled: false, schedule: "17 * * * *", model: "deepseek-v4-flash", var: "" } # hourly Careful Finance opportunity summaries when enabled; standalone workflow currently handles production
 
   monitor-polymarket: { enabled: false, schedule: "30 12 * * *", model: "claude-sonnet-4-6" } # monitor specific markets for 24h price moves and volume changes
   monitor-kalshi: { enabled: false, schedule: "0 13 * * *", model: "claude-sonnet-4-6" } # monitor Kalshi prediction markets for 24h price moves and volume

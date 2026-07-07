@@ -27,6 +27,10 @@ jobs:
       BARKER_CAMPAIGNS_URL: ${{ vars.BARKER_CAMPAIGNS_URL }}
       BARKER_DEFI_ASSETS: ${{ vars.BARKER_DEFI_ASSETS }}
       BARKER_API_KEY: ${{ secrets.BARKER_API_KEY }}
+      CHAT_MODEL: deepseek-v4-flash
+      ANTHROPIC_MODEL: deepseek-v4-flash
+      DEEPSEEK_MODEL: deepseek-v4-flash
+      CLAUDE_CODE_MODEL: deepseek-v4-flash
     steps:
       - uses: actions/checkout@v5
 

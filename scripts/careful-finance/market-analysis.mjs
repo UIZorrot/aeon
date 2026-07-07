@@ -23,7 +23,7 @@ async function main() {
     analysis: {
       source: "aeon-market-analysis",
       generatedAt: new Date().toISOString(),
-      model: process.env.USE_CLAUDE_CODE === "true" ? "claude-code" : "deterministic",
+      model: process.env.USE_CLAUDE_CODE === "true" ? selectedModel() : "deterministic",
       summaryMarkdown,
       structured
     }
@@ -284,7 +284,7 @@ function cleanEnv(value) {
 
 function runClaude(prompt) {
   return new Promise((resolve, reject) => {
-    const child = spawn("claude", ["-p", "-"], {
+    const child = spawn("claude", ["-p", "-", "--model", selectedModel()], {
       stdio: ["pipe", "pipe", "pipe"]
     });
     let stdout = "";
@@ -304,6 +304,16 @@ function runClaude(prompt) {
 
     child.stdin.end(prompt);
   });
+}
+
+function selectedModel() {
+  return (
+    cleanEnv(process.env.CLAUDE_CODE_MODEL) ||
+    cleanEnv(process.env.CHAT_MODEL) ||
+    cleanEnv(process.env.ANTHROPIC_MODEL) ||
+    cleanEnv(process.env.DEEPSEEK_MODEL) ||
+    "deepseek-v4-flash"
+  );
 }
 
 main().catch((error) => {
