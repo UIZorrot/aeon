@@ -1,0 +1,51 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "Heartbeat Health Status"
+      },
+      "children": [
+        "stack"
+      ]
+    },
+    "stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "alert-failed",
+        "alert-selfcheck",
+        "alert-p3"
+      ]
+    },
+    "alert-failed": {
+      "type": "Alert",
+      "props": {
+        "title": "FAILED: heartbeat",
+        "message": "Failed 1h ago — 64 consecutive failures. Error shows zero token usage, likely API-level",
+        "type": "error"
+      }
+    },
+    "alert-selfcheck": {
+      "type": "Alert",
+      "props": {
+        "title": "SELF-CHECK: heartbeat",
+        "message": "Last success 2026-07-01 (5.5 days ago, exceeds 36h threshold)",
+        "type": "error"
+      }
+    },
+    "alert-p3": {
+      "type": "Alert",
+      "props": {
+        "title": "P3: heartbeat last success 5.5d ago",
+        "message": "Schedule: 3x daily, 2x interval = 16h",
+        "type": "warning"
+      }
+    }
+  }
+}
