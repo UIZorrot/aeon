@@ -1,22 +1,16 @@
-HEARTBEAT_OK · STATUS_PAGE=OK
+**HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md**
 
 ## Summary
 
-All checks passed across every priority tier:
+All priority checks passed clean:
 
-| Tier | Check | Result |
-|------|-------|--------|
-| P0 | Failed/stuck skills | None — `last_status=success` |
-| P0 | API degradation | `consecutive_failures=0` |
-| P0 | Chronic failures | `success_rate=54%` (above 0.5 threshold) |
-| P0 | Self-check | `last_success` <1h ago (well within 36h) |
-| P1 | Stalled PRs | None open |
-| P1 | Urgent issues | Issues disabled on repo |
-| P2 | Flagged memory | Nothing flagged |
-| P3 | Missing skills | Only heartbeat enabled; run is current |
-
-No notification sent — nothing to flag.
+| Tier | Result |
+|------|--------|
+| **P0** | All clear — heartbeat last_status=success, consecutive_failures=0, success_rate=54% |
+| **P1** | No open PRs; issues disabled on repo |
+| **P2** | MEMORY.md clean, no flagged items |
+| **P3** | Only heartbeat enabled; last_success is current — well within tolerance |
 
 **Files modified:**
-- `docs/status.md` — regenerated (🟢 OK, success rate corrected to 54%, timestamp updated)
-- `memory/logs/2026-07-08.md` — appended run entry
+- `docs/status.md` — updated timestamp and next scheduled run (20:00 UTC)
+- `memory/logs/2026-07-08.md` — appended run log
