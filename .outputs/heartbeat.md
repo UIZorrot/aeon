@@ -2,17 +2,23 @@ HEARTBEAT_OK · STATUS_PAGE=OK
 
 ## Summary
 
-Ran the heartbeat skill across all four priority tiers — everything is green:
+All priority checks passed clean. Here's the rundown:
 
 | Tier | Check | Result |
 |------|-------|--------|
-| P0 | Failed/stuck/degraded skills | Clear — heartbeats `last_status=success`, `consecutive_failures=0`, `success_rate=54%` |
-| P1 | Stalled PRs & urgent issues | Clear — no open PRs, issues disabled on repo |
-| P2 | Flagged memory items | Clear — MEMORY.md has no follow-ups |
-| P3 | Missing scheduled skills | Clear — only heartbeat enabled, `last_success` within tolerance |
+| **P0** | Failed/stuck skills | ✅ None — heartbeat only entry, `last_status: success` |
+| **P0** | API degradation | ✅ `consecutive_failures: 0` |
+| **P0** | Chronic failures | ✅ `success_rate: 55%` (above 0.5 threshold) |
+| **P0** | Self-check | ✅ `last_success` ~6h ago (well within 36h) |
+| **P1** | Stalled PRs | ✅ No open PRs |
+| **P1** | Urgent issues | ✅ Issues disabled on repo |
+| **P2** | Flagged memory | ✅ MEMORY.md clean |
+| **P3** | Missing scheduled | ✅ Heartbeat on schedule, last_success within 2× interval |
+| **Token pulse** | Report | Skipped — no `articles/token-report-*.md` files |
+| **Issues** | Open | None |
 
-**Files written:**
-- `docs/status.md` — regenerated with 🟢 OK, updated timestamp, current skill health table
-- `memory/logs/2026-07-09.md` — daily log entry with full findings
+**No notification sent** — nothing needs attention.
 
-No notification sent — nothing needs attention.
+**Files updated:**
+- `docs/status.md` — refreshed with latest timestamps and success rate (55%)
+- `memory/logs/2026-07-09.md` — appended heartbeat run entry
