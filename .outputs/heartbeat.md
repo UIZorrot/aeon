@@ -1,23 +1,20 @@
+HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md
+
 ## Summary
 
-**HEARTBEAT_OK · STATUS_PAGE=OK**
+All priority checks passed with no flags:
 
-All checks passed across P0–P3:
-
-| Tier | Check | Result |
-|------|-------|--------|
-| P0 | Failed/stuck skills | None — only heartbeat, last_status=success |
-| P0 | API degradation | None — consecutive_failures=0 |
-| P0 | Chronic failures | None — success_rate=55% (above 0.5 threshold) |
-| P0 | Self-check | OK — last_success ~19h ago (well within 36h) |
-| P1 | Stalled PRs | None open |
-| P1 | Urgent issues | Issues disabled on repo |
-| P2 | Flagged memory | Nothing flagged |
-| P3 | Missing skills | Only heartbeat enabled; within 2× schedule tolerance |
-| — | Token pulse | Skipped (no `articles/token-report-*.md` files) |
+| Level | Result |
+|-------|--------|
+| **P0** (Failed/stuck skills) | ✅ All clear — heartbeat healthy, success_rate 55%, no degradation |
+| **P1** (Stalled PRs/urgent issues) | ✅ No open PRs; issues disabled on repo |
+| **P2** (Flagged memory items) | ✅ No flagged follow-up items in MEMORY.md |
+| **P3** (Missing scheduled skills) | ✅ Only heartbeat enabled; last success ~4.5h ago, well within tolerance |
+| **Token pulse** | Skipped — no `articles/token-report-*.md` files |
+| **Open issues** | None |
 
 **Files modified:**
-- `docs/status.md` — regenerated with overall 🟢 OK, updated timestamp (2026-07-10 15:30 UTC), next run at 20:00 UTC
-- `memory/logs/2026-07-10.md` — created with run details
+- `docs/status.md` — regenerated with updated timestamp (2026-07-10 20:08 UTC), next run at 08:00 UTC, overall 🟢 OK
+- `memory/logs/2026-07-10.md` — appended run entry
 
-No notification sent — nothing needs attention.
+**Notification:** Skipped per 48h dedup rule — identical "all clear" result was already logged in today's earlier heartbeat run.
