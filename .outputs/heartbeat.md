@@ -2,21 +2,22 @@
 
 **HEARTBEAT_OK · STATUS_PAGE=OK**
 
-All checks passed with nothing to flag:
+All checks passed across P0–P3:
 
 | Tier | Check | Result |
 |------|-------|--------|
-| P0 | Failed/stuck skills | None — heartbeat last_status=success |
-| P0 | API degradation | consecutive_failures=0 |
-| P0 | Chronic failures | success_rate=55% (84/153) ≥ 50% |
-| P0 | Heartbeat self-check | last_success ~6h ago, well within 36h |
+| P0 | Failed/stuck skills | None — only heartbeat, last_status=success |
+| P0 | API degradation | None — consecutive_failures=0 |
+| P0 | Chronic failures | None — success_rate=55% (above 0.5 threshold) |
+| P0 | Self-check | OK — last_success ~19h ago (well within 36h) |
 | P1 | Stalled PRs | None open |
-| P1 | Urgent issues | None |
+| P1 | Urgent issues | Issues disabled on repo |
 | P2 | Flagged memory | Nothing flagged |
-| P3 | Missing/silent skills | Only heartbeat enabled, within schedule tolerance |
+| P3 | Missing skills | Only heartbeat enabled; within 2× schedule tolerance |
+| — | Token pulse | Skipped (no `articles/token-report-*.md` files) |
 
 **Files modified:**
-- `docs/status.md` — regenerated with 🟢 OK, updated timestamp, next heartbeat at 08:00 UTC
-- `memory/logs/2026-07-09.md` — appended run entry
+- `docs/status.md` — regenerated with overall 🟢 OK, updated timestamp (2026-07-10 15:30 UTC), next run at 20:00 UTC
+- `memory/logs/2026-07-10.md` — created with run details
 
-No notification sent — nothing new to flag (previous runs in the last 48h also reported all-clear).
+No notification sent — nothing needs attention.
