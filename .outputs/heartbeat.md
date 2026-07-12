@@ -1,21 +1,24 @@
-HEARTBEAT_OK · STATUS_PAGE=OK
+**HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md**
 
 ## Summary
 
-All priority checks clear — no notifications needed.
+All checks green across every priority tier:
 
-| Check | Result |
-|-------|--------|
-| **P0 — Failed skills** | None. Only heartbeat in state, `last_status: success` |
-| **P0 — Stuck skills** | None. `last_status` is `success`, not `dispatched` |
-| **P0 — API degradation** | None. `consecutive_failures: 0` |
-| **P0 — Chronic failures** | None. Success rate 57% (above 50% threshold) |
-| **P0 — Self-check** | Passed. `last_success` ~0h ago (well within 36h) |
-| **P1 — Stalled PRs** | No open PRs |
-| **P1 — Urgent issues** | Issues unavailable on repo |
-| **P2 — Flagged memory** | Nothing flagged in MEMORY.md |
-| **P3 — Missing scheduled** | Only heartbeat enabled; `last_success` well within 2× interval |
+| Tier | Check | Verdict |
+|------|-------|---------|
+| P0 | Failed/stuck skills | ✅ Clear — only heartbeat in state file, `last_status: success`, `consecutive_failures: 0` |
+| P0 | API degradation | ✅ Clear — 0 consecutive failures |
+| P0 | Chronic failures | ✅ Clear — success_rate 57% (>50% threshold) |
+| P0 | Heartbeat self-check | ✅ Clear — last_success 2026-07-12 14:16 UTC (~0h ago) |
+| P1 | Stalled PRs | ✅ Clear — no open PRs |
+| P1 | Urgent issues | ✅ N/A — issues disabled on this repo |
+| P2 | Flagged memory | ✅ Clear — nothing flagged in MEMORY.md |
+| P3 | Missing skills | ✅ Clear — only heartbeat enabled, in state file, within 2× schedule |
+| Token | Pulse section | Skipped — no `articles/token-report-*.md` files |
+| Issues | Open issues | None |
 
-**Files modified:**
-- `docs/status.md` — regenerated with current fleet health (🟢 OK)
-- `memory/logs/2026-07-12.md` — appended heartbeat run log entry
+**Files changed:**
+- `docs/status.md` — regenerated with 🟢 OK, timestamp and next-run updated
+- `memory/logs/2026-07-12.md` — appended run log entry
+
+**No notification sent** — nothing needs attention, and prior runs within the 48h dedup window were also all-clear.
