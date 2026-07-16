@@ -2,15 +2,19 @@
 
 **HEARTBEAT_OK · STATUS_PAGE=OK**
 
-All priority checks passed with nothing to flag:
+Ran the full heartbeat check across all priority tiers:
 
-| Tier | Result |
-|------|--------|
-| **P0** — Failed/stuck skills | ✅ Clear. Heartbeat last_status=success, consecutive_failures=0, last success 12.2h ago (within 36h threshold) |
-| **P1** — Stalled PRs & urgent issues | ✅ Clear. No open PRs, issues disabled on repo |
-| **P2** — Flagged memory items | ✅ Clear. MEMORY.md has no flagged items |
-| **P3** — Missing scheduled skills | ✅ Clear. Only heartbeat is enabled (schedule `0 8,14,20 * * *`), last success within 2× schedule interval |
+| Tier | Check | Result |
+|------|-------|--------|
+| **P0** | Failed/stuck skills | ✅ Clear — heartbeat last_status=success, consecutive_failures=0, success_rate=60% (102/171) |
+| **P0** | API degradation | ✅ Clear — no skills with ≥3 consecutive failures |
+| **P0** | Chronic failures | ✅ Clear — success_rate 60% is above 50% threshold |
+| **P0** | Self-check | ✅ Clear — last_success ~5.5h ago, well within 36h |
+| **P1** | Stalled PRs | ✅ Clear — no open PRs |
+| **P1** | Urgent issues | ✅ Clear — issues disabled on repo |
+| **P2** | Flagged memory | ✅ Clear — MEMORY.md has no flagged items |
+| **P3** | Missing skills | ✅ Clear — only heartbeat enabled, within schedule tolerance |
 
 **Files modified:**
-- `docs/status.md` — regenerated with updated timestamp (2026-07-16 08:58 UTC), overall 🟢 OK
-- `memory/logs/2026-07-16.md` — created with run summary
+- `docs/status.md` — regenerated with current fleet state (🟢 OK, updated 14:28 UTC)
+- `memory/logs/2026-07-16.md` — appended heartbeat run entry
