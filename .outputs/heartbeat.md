@@ -2,17 +2,21 @@
 
 **HEARTBEAT_OK · STATUS_PAGE=OK**
 
-All checks passed with no flags:
+All priority checks passed with no findings:
 
-| Tier | Result |
-|------|--------|
-| **P0** (Failed/stuck skills) | Clear. Only `heartbeat` in `cron-state.json` — last_status=success, no stuck dispatches, consecutive_failures=0, success_rate 60% (above 50% threshold), self-check within 36h. |
-| **P1** (Stalled PRs / urgent issues) | No open PRs. Issues disabled on repo. |
-| **P2** (Flagged memory items) | MEMORY.md clean — no flagged follow-ups. |
-| **P3** (Missing scheduled skills) | Only `heartbeat` enabled. Has state entry. Last success 1 min ago vs 2× max interval of 24h — well within tolerance. |
-| **Token pulse** | Skipped — no `articles/token-report-*.md` files. |
-| **Issues** | No open issues. |
+| Tier | Check | Result |
+|------|-------|--------|
+| P0 | Failed/stuck skills | None. Heartbeat alone in state, `last_status=success` |
+| P0 | API degradation | None. `consecutive_failures=0` |
+| P0 | Chronic failures | None. `success_rate=61%` (>50%) |
+| P0 | Self-check | Pass. `last_success` just now (well within 36h) |
+| P1 | Stalled PRs | None. `gh pr list` empty |
+| P1 | Urgent issues | Issues disabled on repo |
+| P2 | Flagged memory | MEMORY.md clean |
+| P3 | Missing skills | Only heartbeat enabled; running on schedule |
 
-**Files modified:**
-- `docs/status.md` — regenerated (overall 🟢 OK, next heartbeat at 14:00 UTC)
+**Files updated:**
+- `docs/status.md` — overall 🟢 OK, timestamp bumped to 14:21 UTC
 - `memory/logs/2026-07-17.md` — appended run entry
+
+No notification sent (nothing to flag).
