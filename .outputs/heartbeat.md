@@ -1,22 +1,20 @@
+HEARTBEAT_OK · STATUS_PAGE=OK
+
+---
+
 ## Summary
 
-**HEARTBEAT_OK · STATUS_PAGE=OK**
+Ran all heartbeat checks at 2026-07-18 09:02 UTC. Everything is green:
 
-All priority checks passed with no findings:
+| Tier | Result |
+|------|--------|
+| **P0** (Failed/stuck skills) | Clear — heartbeat last succeeded 12.4h ago, 61% success rate, no consecutive failures |
+| **P1** (Stalled PRs / urgent issues) | Clear — no open PRs, issues disabled on repo |
+| **P2** (Flagged memory) | Clear — MEMORY.md has no flagged follow-up items |
+| **P3** (Missing scheduled skills) | Clear — only heartbeat enabled, last success within 2× schedule interval |
 
-| Tier | Check | Result |
-|------|-------|--------|
-| P0 | Failed/stuck skills | None. Heartbeat alone in state, `last_status=success` |
-| P0 | API degradation | None. `consecutive_failures=0` |
-| P0 | Chronic failures | None. `success_rate=61%` (>50%) |
-| P0 | Self-check | Pass. `last_success` just now (well within 36h) |
-| P1 | Stalled PRs | None. `gh pr list` empty |
-| P1 | Urgent issues | Issues disabled on repo |
-| P2 | Flagged memory | MEMORY.md clean |
-| P3 | Missing skills | Only heartbeat enabled; running on schedule |
+**Files modified:**
+- `docs/status.md` — updated with 🟢 OK overall status
+- `memory/logs/2026-07-18.md` — created daily log entry
 
-**Files updated:**
-- `docs/status.md` — overall 🟢 OK, timestamp bumped to 14:21 UTC
-- `memory/logs/2026-07-17.md` — appended run entry
-
-No notification sent (nothing to flag).
+No notification needed — nothing requires attention.
