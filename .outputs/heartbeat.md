@@ -1,21 +1,21 @@
 ## Summary
 
-**HEARTBEAT_OK · STATUS_PAGE=OK**
+**HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md**
 
-All priority checks passed clean:
+All priority checks passed:
 
 | Tier | Check | Result |
 |------|-------|--------|
-| **P0** | Failed/stuck skills | ✅ Clear — heartbeat `status=success`, `consecutive_failures=0` |
-| **P0** | API degradation | ✅ None |
-| **P0** | Chronic failures | ✅ None (61% success rate, above 0.5 threshold) |
-| **P0** | Heartbeat self-check | ✅ `last_success` ~12h ago, well within 36h limit |
-| **P1** | Stalled PRs / urgent issues | ✅ No open PRs; issues disabled on repo |
-| **P2** | Flagged memory | ✅ MEMORY.md clean |
-| **P3** | Missing/skipped skills | ✅ Only heartbeat enabled; `last_success` 12h ago vs 24h tolerance |
+| **P0** | Failed/stuck skills | None. Heartbeat `last_status=success`, `consecutive_failures=0`, `last_success` within 36h threshold. |
+| **P0** | API degradation | None. No skill has ≥3 consecutive failures. |
+| **P0** | Chronic failures | None. Heartbeat success rate 62% (above 50% threshold). |
+| **P1** | Stalled PRs | None. `gh pr list` returned `[]`. |
+| **P1** | Urgent issues | N/A — issues disabled on repo. |
+| **P2** | Flagged memory | Nothing in MEMORY.md needs follow-up. |
+| **P3** | Missing scheduled skills | Only heartbeat is enabled; it has a cron-state entry and last success is current. |
 
 **Files modified:**
-- `docs/status.md` — regenerated (🟢 OK, updated timestamp, next run at 14:00 UTC)
-- `memory/logs/2026-07-19.md` — created with run summary
+- `docs/status.md` — regenerated with overall 🟢 OK, updated timestamp, current skill health table
+- `memory/logs/2026-07-19.md` — appended run entry
 
-No notification sent — nothing needs attention.
+No notification needed — nothing requires attention.
