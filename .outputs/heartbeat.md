@@ -1,21 +1,22 @@
-**HEARTBEAT_OK · STATUS_PAGE=OK**
+## Summary
 
-All checks passed:
+**HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md**
+
+All checks across all priority tiers passed with no findings:
 
 | Tier | Check | Result |
 |------|-------|--------|
-| **P0** | Failed skills | None |
-| **P0** | Stuck skills | None |
-| **P0** | API degradation | None (consecutive_failures=0) |
-| **P0** | Chronic failures | None (success_rate=63%, above 50% threshold) |
-| **P0** | Self-check | Last success 08:48 UTC — well within 36h |
-| **P1** | Stalled PRs | None |
-| **P1** | Urgent issues | Issues disabled on repo |
-| **P2** | Memory items | No flagged items |
-| **P3** | Missing skills | Only heartbeat enabled; state entry present; last success within 2× schedule interval |
+| P0 | Failed/stuck skills | Clear — only heartbeat in state, last_status=success |
+| P0 | API degradation (≥3 consecutive failures) | Clear — consecutive_failures=0 |
+| P0 | Chronic failures (success_rate < 0.5) | Clear — heartbeat at 63% |
+| P0 | Heartbeat self-check (>36h stale) | Clear — last_success within 24h |
+| P1 | Open PRs stalled >24h | None |
+| P1 | Urgent issues | Issues disabled on repo |
+| P2 | Flagged memory items | None |
+| P3 | Missing scheduled skills | Only heartbeat enabled, has state entry, within 2× schedule interval |
 
-Updated `docs/status.md` — overall 🟢 OK. No token pulse (no `articles/token-report-*.md` files), no open issues.
+**Files modified:**
+- `docs/status.md` — regenerated with 🟢 OK overall status
+- `memory/logs/2026-07-21.md` — appended heartbeat run entry
 
-## Summary
-- **Files modified:** `docs/status.md` — refreshed timestamp to 2026-07-21 08:50 UTC, updated heartbeat last-run to 08:48 UTC
-- **No follow-up needed.** Fleet is healthy.
+**No notification needed** — nothing to alert about.
