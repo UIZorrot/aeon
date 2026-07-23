@@ -4,20 +4,15 @@ HEARTBEAT_OK · STATUS_PAGE=OK
 
 ## Summary
 
-All checks passed — nothing needs attention.
+Ran heartbeat at 08:48 UTC. All clear across every tier:
 
-| Tier | Check | Result |
-|------|-------|--------|
-| P0 | Failed/stuck skills | None |
-| P0 | API degradation (consecutive_failures ≥ 3) | None |
-| P0 | Chronic failures (success_rate < 0.5) | None (heartbeat at 63%) |
-| P0 | Self-check (last_success > 36h) | Fine (~6.5h ago) |
-| P1 | Stalled PRs / urgent issues | None |
-| P2 | Flagged memory items | None |
-| P3 | Missing scheduled skills | None (only heartbeat enabled) |
+| Check | Result |
+|-------|--------|
+| **P0** — Failed & stuck skills | ✅ Clean. Heartbeat last succeeded 2026-07-22 21:02 UTC (~11.8h ago), 64% success rate, 0 consecutive failures. |
+| **P1** — Stalled PRs & urgent issues | ✅ No open PRs; issues disabled on repo. |
+| **P2** — Flagged memory items | ✅ Nothing flagged. |
+| **P3** — Missing scheduled skills | ✅ Heartbeat is the only enabled skill. Last success within bounds. |
+| **Token pulse** | Skipped — no token-report files exist. |
+| **Open issues** | 0. |
 
-**Files updated:**
-- `docs/status.md` — regenerated, overall 🟢 OK
-- `memory/logs/2026-07-22.md` — appended heartbeat run entry
-
-No notification sent (nothing to alert on).
+No notification sent — nothing needs attention. Updated `docs/status.md` (overall 🟢 OK) and wrote daily log to `memory/logs/2026-07-23.md`.
