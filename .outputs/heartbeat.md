@@ -1,19 +1,15 @@
+HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md
+
 ## Summary
 
-**HEARTBEAT_OK · STATUS_PAGE=OK**
+**P0 — Failed & stuck skills:** All clear. Heartbeat is the only tracked skill (64% success rate, 0 consecutive failures, last success ~5.4h ago).
 
-All checks passed with nothing to report:
+**P1 — Stalled PRs & urgent issues:** No open PRs, no urgent issues.
 
-| Priority | Check | Result |
-|----------|-------|--------|
-| P0 | Failed/stuck skills | Clear — only enabled skill (heartbeat) has `last_status: success` |
-| P0 | API degradation | `consecutive_failures: 0` |
-| P0 | Chronic failures | `success_rate: 64%`, above 0.5 threshold |
-| P0 | Heartbeat self-check | Last success ~12.6h ago, well within 36h |
-| P1 | Stalled PRs / urgent issues | None |
-| P2 | Flagged memory items | None |
-| P3 | Missing scheduled skills | Only heartbeat enabled; last success within 2× max interval |
+**P2 — Flagged memory:** MEMORY.md clean, no follow-ups flagged.
 
-**Files updated:**
-- `docs/status.md` — refreshed with current timestamp (🟢 OK)
-- `memory/logs/2026-07-24.md` — created with run details
+**P3 — Missing scheduled skills:** Only heartbeat is enabled (schedule `0 8,14,20 * * *`). It's running on schedule with last success well within the 2× interval threshold.
+
+**Token pulse:** Skipped — no `articles/token-report-*.md` files exist.
+
+**Status page:** `docs/status.md` regenerated — overall 🟢 OK.
