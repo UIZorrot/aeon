@@ -1,21 +1,19 @@
 ## Summary
 
-**HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md**
+**HEARTBEAT_OK · STATUS_PAGE=OK**
 
-All checks passed across every priority tier:
+All checks passed with nothing to report:
 
-| Tier | Check | Result |
-|------|-------|--------|
-| P0 | Failed/stuck skills | Clear — heartbeat is the only entry, `last_status=success` |
-| P0 | API degradation | Clear — `consecutive_failures=0` |
-| P0 | Chronic failures | Clear — `success_rate=64%` (123/192), above 50% threshold |
-| P0 | Self-check | Clear — `last_success` 14:36 UTC, ~1.4h ago (well within 36h) |
-| P1 | Open PRs | None |
-| P1 | Urgent issues | Issues disabled on repo |
-| P2 | Flagged memory | Nothing flagged |
-| P3 | Missing skills | Only heartbeat enabled, has state entry, last run well within 2× interval |
-| — | Token pulse | Skipped — no `articles/token-report-*.md` files |
+| Priority | Check | Result |
+|----------|-------|--------|
+| P0 | Failed/stuck skills | Clear — only enabled skill (heartbeat) has `last_status: success` |
+| P0 | API degradation | `consecutive_failures: 0` |
+| P0 | Chronic failures | `success_rate: 64%`, above 0.5 threshold |
+| P0 | Heartbeat self-check | Last success ~12.6h ago, well within 36h |
+| P1 | Stalled PRs / urgent issues | None |
+| P2 | Flagged memory items | None |
+| P3 | Missing scheduled skills | Only heartbeat enabled; last success within 2× max interval |
 
-**Files modified:**
-- `docs/status.md` — regenerated with current fleet health (🟢 OK)
-- `memory/logs/2026-07-23.md` — appended third heartbeat entry for today
+**Files updated:**
+- `docs/status.md` — refreshed with current timestamp (🟢 OK)
+- `memory/logs/2026-07-24.md` — created with run details
