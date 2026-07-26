@@ -1,19 +1,18 @@
-HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md
-
 ## Summary
 
-**P0 — Failed & stuck skills**: All clear. Heartbeat is the only skill in cron-state.json. Status: success, 66% success rate (131/200), 0 consecutive failures, last success ~5.4h ago.
+**HEARTBEAT_OK · STATUS_PAGE=OK**
 
-**P1 — Stalled PRs & urgent issues**: No open PRs. Issues disabled on this repo.
+All checks passed — nothing needs attention:
 
-**P2 — Flagged memory items**: MEMORY.md clean, no follow-up items.
-
-**P3 — Missing scheduled skills**: Only heartbeat enabled in `aeon.yml`. Its `last_success` is well within 2× its max schedule interval (24h).
-
-**Status page**: Regenerated `docs/status.md` — overall 🟢 OK, updated at 2026-07-26 14:46 UTC. No token pulse (no token-report files exist). No open issues.
+| Tier | Result |
+|------|--------|
+| **P0** | All clear. Heartbeat `last_status=success`, `consecutive_failures=0`, `success_rate=66%` (132/201). No failed, stuck, or degraded skills. Self-check: `last_success` ~6h ago (well within 36h). |
+| **P1** | No open PRs. Issues disabled on repo. |
+| **P2** | MEMORY.md clean — no flagged items. |
+| **P3** | Only heartbeat is enabled. Schedule `0 8,14,20 * * *` — last success within threshold. |
 
 **Files modified:**
-- `docs/status.md` — regenerated with current state
+- `docs/status.md` — updated timestamp, next run (08:00 UTC)
 - `memory/logs/2026-07-26.md` — appended run entry
 
-No notification needed — nothing needs attention.
+**Skipped:** Token pulse (no `articles/token-report-*.md` files), notification (nothing to flag).
