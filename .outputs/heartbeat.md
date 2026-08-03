@@ -1,24 +1,18 @@
-HEARTBEAT_OK · STATUS_PAGE=OK
-
----
+HEARTBEAT_OK · STATUS_PAGE=OK — wrote docs/status.md
 
 ## Summary
 
-**What I did:** Ran the heartbeat skill at 2026-08-03 08:03 UTC.
+All priority checks passed clean:
 
-**Checks performed:**
+| Tier | Check | Result |
+|------|-------|--------|
+| **P0** | Failed/stuck skills | None — heartbeat `success_rate=69%`, `consecutive_failures=0`, `last_success` 1 min ago |
+| **P0** | API degradation | None |
+| **P0** | Chronic failures | None |
+| **P0** | Heartbeat self-check | Healthy — `last_success` well within 36h |
+| **P1** | Stalled PRs | None open |
+| **P1** | Urgent issues | Issues disabled on repo |
+| **P2** | Flagged memory | None |
+| **P3** | Missing skills | Only heartbeat enabled; entry present and current |
 
-| Priority | Check | Result |
-|----------|-------|--------|
-| P0 | Failed/stuck skills | Clear — heartbeat is the only tracked skill, last_status=success, consecutive_failures=0 |
-| P0 | Self-check | heartbeat last_success ~11.4h ago (well within 36h threshold) |
-| P1 | Stalled PRs | No open PRs |
-| P1 | Urgent issues | Issues disabled on repo |
-| P2 | Memory flags | MEMORY.md clean, no flagged items |
-| P3 | Missing scheduled skills | Only heartbeat enabled; entry exists and last_success is within 2× schedule interval |
-
-**Files modified:**
-- `docs/status.md` — regenerated status page (overall 🟢 OK)
-- `memory/logs/2026-08-03.md` — created daily log entry
-
-**No notifications sent** — nothing needs attention.
+**Overall: 🟢 OK** — no notification sent. Updated `docs/status.md` with current fleet state.
